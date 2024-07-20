@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codeserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: codeserver
+  template:
+    metadata:
+      labels:
+        app: codeserver
+    spec:
+      containers:
+      - name: codeserver
+        image: codercom/code-server:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PASSWORD
+          value: "your_password"  # Set password for CodeServer if needed
